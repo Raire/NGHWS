@@ -12,4 +12,9 @@ const publicFolder = path.join(__dirname, '..', 'public');
 
 app.use(express.static(publicFolder));
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send(err.message);
+})
+
 module.exports = app;
